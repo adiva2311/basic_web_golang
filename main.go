@@ -8,7 +8,9 @@ import (
 func main() {
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/home", homeHandler)
+	mux.HandleFunc("/", homeHandler)
+	mux.HandleFunc("/about", aboutHandler)
+	mux.HandleFunc("/profile", profileHandler)
 
 	log.Println("Starting on Port 9000")
 
@@ -18,4 +20,12 @@ func main() {
 
 func homeHandler(w http.ResponseWriter, r *http.Request){
 	w.Write([]byte("Hello"))
+}
+
+func aboutHandler(w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("About Page"))
+}
+
+func profileHandler(w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("Profile Page"))
 }
